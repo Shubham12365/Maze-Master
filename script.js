@@ -11,6 +11,56 @@ let level2 = [
 	[1, 0, 1, 1, 1, 1],
 	[1, 1, 1, 0, 1, 1],
 ];
+let level3 = [
+	[1, 0, 1, 1, 1],
+	[1, 1, 1, 0, 1],
+	[1, 0, 1, 0, 1],
+	[1, 1, 1, 0, 1],
+	[0, 1, 1, 1, 1],
+];
+let level4 = [
+	[1, 1, 0, 1, 1],
+	[1, 1, 1, 1, 0],
+	[0, 1, 0, 1, 1],
+	[1, 1, 0, 1, 1],
+	[1, 0, 1, 1, 1],
+];
+let level5 = [
+	[1, 0, 1, 1, 1, 1],
+	[1, 1, 0, 0, 0, 1],
+	[1, 0, 1, 1, 0, 1],
+	[1, 1, 1, 0, 1, 1],
+	[0, 0, 1, 1, 1, 1],
+	[1, 1, 1, 0, 1, 1],
+];
+let level6 = [
+	[1, 0, 1, 1, 1, 1],
+	[1, 1, 0, 0, 0, 1],
+	[1, 0, 1, 1, 1, 1],
+	[1, 1, 1, 0, 0, 0],
+	[0, 1, 1, 1, 1, 1],
+	[1, 1, 1, 0, 1, 1],
+];
+let level7 = [
+	[1, 0, 1, 1, 1, 1, 1, 1],
+	[1, 1, 0, 0, 0, 0, 0, 1],
+	[1, 0, 1, 1, 0, 1, 1, 1],
+	[1, 1, 1, 0, 0, 0, 0, 1],
+	[0, 0, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 0, 1, 0, 0, 0],
+	[1, 0, 0, 0, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 0, 1, 1],
+];
+let level8 = [
+	[1, 0, 1, 1, 1, 1, 1, 1],
+	[1, 1, 0, 0, 0, 0, 0, 1],
+	[1, 0, 1, 1, 1, 1, 0, 1],
+	[1, 1, 1, 0, 0, 0, 0, 1],
+	[0, 0, 1, 1, 1, 1, 1, 1],
+	[1, 1, 1, 0, 1, 0, 0, 0],
+	[1, 0, 0, 0, 1, 1, 1, 1],
+	[1, 1, 1, 1, 1, 0, 1, 1],
+];
 
 let mazeArray = level1;
 let isLevelChangeListenerAdded = false;
@@ -26,6 +76,16 @@ function handlelevel() {
 		mazeArray = level2;
 	} else if (level == 3) {
 		mazeArray = level3;
+	} else if (level == 4) {
+		mazeArray = level;
+	} else if (level == 5) {
+		mazeArray = level5;
+	} else if (level == 6) {
+		mazeArray = level6;
+	} else if (level == 7) {
+		mazeArray = level7;
+	} else if (level == 8) {
+		mazeArray = level8;
 	}
 
 	// To make motii and momo stay in maze
@@ -107,7 +167,14 @@ function getRatPosition() {
 	return position;
 }
 
-document.addEventListener("keydown", function (e) {
+document.addEventListener("keydown", EventHandle);
+
+let right = document.querySelector(".right");
+let left = document.querySelector(".left");
+let up = document.querySelector(".up");
+let down = document.querySelector(".down");
+
+right.addEventListener("click", function (e) {
 	let rat = document.getElementById("moti");
 	let cheese = document.getElementById("momo");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
@@ -116,8 +183,121 @@ document.addEventListener("keydown", function (e) {
 	let foodTop = cheese.offsetTop;
 	let ratPos = getRatPosition();
 
-	// console.log(mazeArray.length);
-	if (e.key == "ArrowRight") {
+	if (
+		ratleft < (mazeArray[0].length - 1) * 50 &&
+		mazeArray[ratPos[0]][ratPos[1] + 1] == 1
+	) {
+		ratleft += 50;
+		rat.style.left = ratleft + "px";
+		mazeArray[ratPos[0]][ratPos[1]] = 1;
+		mazeArray[ratPos[0]][ratPos[1] + 1] = 2;
+	}
+	if (ratleft == foodleft && ratTop == foodTop) {
+		alert("Exercise kr motii");
+		// mazeArray[3][3] = 1;
+		setRatPos(0, 0);
+		setCheesePos(0, 0);
+		mazeArray[0][0] = 2;
+		mazeArray[mazeArray.length - 1][mazeArray[0].length - 1] = 1;
+	}
+});
+
+left.addEventListener("click", function (e) {
+	let rat = document.getElementById("moti");
+	let cheese = document.getElementById("momo");
+	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
+	let ratTop = rat.offsetTop; //gives the distance from the top of parent
+	let foodleft = cheese.offsetLeft;
+	let foodTop = cheese.offsetTop;
+	let ratPos = getRatPosition();
+
+	if (ratleft > 0 && mazeArray[ratPos[0]][ratPos[1] - 1] == 1) {
+		console.log(ratleft);
+		ratleft -= 50;
+		rat.style.left = ratleft + "px";
+		mazeArray[ratPos[0]][ratPos[1]] = 1;
+		mazeArray[ratPos[0]][ratPos[1] - 1] = 2;
+	}
+	if (ratleft == foodleft && ratTop == foodTop) {
+		alert("Exercise kr motii");
+		// mazeArray[3][3] = 1;
+		setRatPos(0, 0);
+		setCheesePos(0, 0);
+		mazeArray[0][0] = 2;
+		mazeArray[mazeArray.length - 1][mazeArray[0].length - 1] = 1;
+	}
+});
+
+up.addEventListener("click", function (e) {
+	let rat = document.getElementById("moti");
+	let cheese = document.getElementById("momo");
+	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
+	let ratTop = rat.offsetTop; //gives the distance from the top of parent
+	let foodleft = cheese.offsetLeft;
+	let foodTop = cheese.offsetTop;
+	let ratPos = getRatPosition();
+
+	if (ratTop > 0 && mazeArray[ratPos[0] - 1][ratPos[1]] == 1) {
+		console.log(ratTop);
+		ratTop -= 50;
+		rat.style.top = ratTop + "px";
+		mazeArray[ratPos[0]][ratPos[1]] = 1;
+		mazeArray[ratPos[0] - 1][ratPos[1]] = 2;
+	}
+	if (ratleft == foodleft && ratTop == foodTop) {
+		alert("Exercise kr motii");
+		// mazeArray[3][3] = 1;
+		setRatPos(0, 0);
+		setCheesePos(0, 0);
+		mazeArray[0][0] = 2;
+		mazeArray[mazeArray.length - 1][mazeArray[0].length - 1] = 1;
+	}
+});
+
+down.addEventListener("click", function (e) {
+	let rat = document.getElementById("moti");
+	let cheese = document.getElementById("momo");
+	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
+	let ratTop = rat.offsetTop; //gives the distance from the top of parent
+	let foodleft = cheese.offsetLeft;
+	let foodTop = cheese.offsetTop;
+	let ratPos = getRatPosition();
+
+	if (
+		mazeArray[ratPos[0] + 1][ratPos[1]] == 1 &&
+		ratTop < (mazeArray.length - 1) * 50
+	) {
+		console.log(ratTop);
+		ratTop += 50;
+		rat.style.top = ratTop + "px";
+		mazeArray[ratPos[0]][ratPos[1]] = 1;
+		mazeArray[ratPos[0] + 1][ratPos[1]] = 2;
+		console.log(mazeArray);
+	}
+	if (ratleft == foodleft && ratTop == foodTop) {
+		alert("Exercise kr motii");
+		// mazeArray[3][3] = 1;
+		setRatPos(0, 0);
+		setCheesePos(0, 0);
+		mazeArray[0][0] = 2;
+		mazeArray[mazeArray.length - 1][mazeArray[0].length - 1] = 1;
+	}
+});
+
+left.addEventListener("click", EventHandle);
+up.addEventListener("click", EventHandle);
+down.addEventListener("click", EventHandle);
+
+function EventHandle(e) {
+	let rat = document.getElementById("moti");
+	let cheese = document.getElementById("momo");
+	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
+	let ratTop = rat.offsetTop; //gives the distance from the top of parent
+	let foodleft = cheese.offsetLeft;
+	let foodTop = cheese.offsetTop;
+	let ratPos = getRatPosition();
+
+	function right() {
 		if (
 			ratleft < (mazeArray[0].length - 1) * 50 &&
 			mazeArray[ratPos[0]][ratPos[1] + 1] == 1
@@ -127,6 +307,10 @@ document.addEventListener("keydown", function (e) {
 			mazeArray[ratPos[0]][ratPos[1]] = 1;
 			mazeArray[ratPos[0]][ratPos[1] + 1] = 2;
 		}
+	}
+	// console.log(mazeArray.length);
+	if (e.key == "ArrowRight" || e == right.click) {
+		right();
 	}
 	if (e.key == "ArrowLeft") {
 		if (ratleft > 0 && mazeArray[ratPos[0]][ratPos[1] - 1] == 1) {
@@ -168,4 +352,4 @@ document.addEventListener("keydown", function (e) {
 		mazeArray[0][0] = 2;
 		mazeArray[mazeArray.length - 1][mazeArray[0].length - 1] = 1;
 	}
-});
+}
