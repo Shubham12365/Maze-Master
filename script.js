@@ -77,7 +77,7 @@ function handlelevel() {
 	} else if (level == 3) {
 		mazeArray = level3;
 	} else if (level == 4) {
-		mazeArray = level;
+		mazeArray = level4;
 	} else if (level == 5) {
 		mazeArray = level5;
 	} else if (level == 6) {
