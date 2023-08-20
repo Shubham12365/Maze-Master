@@ -345,7 +345,7 @@ function EventHandle(e) {
 	}
 
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr mousei");
+		alert("Do Exercise Mouseiii");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);
