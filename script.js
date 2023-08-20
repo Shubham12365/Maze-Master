@@ -89,8 +89,8 @@ function handlelevel() {
 	}
 
 	// To make mousei and cheese stay in maze
-	maze.innerHTML = `<img src="cheese.jpg" id="cheese" alt="cheese" width="50px" height="50px" />
-			<img src="mouse.jpg" id="mouse" alt="mousei" width="50px" height="50px" />`;
+	maze.innerHTML = `<img src="cheese.png" id="cheese" alt="cheese" width="50px" height="50px" />
+			<img src="mouse.png" id="mouse" alt="mousei" width="50px" height="50px" />`;
 
 	createMaze();
 }
