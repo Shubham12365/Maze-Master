@@ -88,9 +88,9 @@ function handlelevel() {
 		mazeArray = level8;
 	}
 
-	// To make motii and momo stay in maze
-	maze.innerHTML = `<img src="momo.jpg" id="momo" alt="momo" width="50px" height="50px" />
-			<img src="moti.jpg" id="moti" alt="motii" width="50px" height="50px" />`;
+	// To make mousei and cheese stay in maze
+	maze.innerHTML = `<img src="cheese.jpg" id="cheese" alt="cheese" width="50px" height="50px" />
+			<img src="mouse.jpg" id="mouse" alt="mousei" width="50px" height="50px" />`;
 
 	createMaze();
 }
@@ -112,17 +112,17 @@ addLevelChangeListener();
 
 // Level.addEventListener("change", handlelevel);
 let maze = document.querySelector(".maze_container");
-let rat = document.querySelector("#moti");
-let cheese = document.querySelector("#momo");
+let rat = document.querySelector("#mouse");
+let cheese = document.querySelector("#cheese");
 
 function setRatPos(x, y) {
-	moti.style.top = x + "px";
-	moti.style.left = y + "px";
+	mouse.style.top = x + "px";
+	mouse.style.left = y + "px";
 }
 
 function setCheesePos(x, y) {
-	momo.style.bottom = x + "px";
-	momo.style.right = y + "px";
+	cheese.style.bottom = x + "px";
+	cheese.style.right = y + "px";
 }
 
 function createMaze() {
@@ -175,8 +175,8 @@ let up = document.querySelector(".up");
 let down = document.querySelector(".down");
 
 right.addEventListener("click", function (e) {
-	let rat = document.getElementById("moti");
-	let cheese = document.getElementById("momo");
+	let rat = document.getElementById("mouse");
+	let cheese = document.getElementById("cheese");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
 	let ratTop = rat.offsetTop; //gives the distance from the top of parent
 	let foodleft = cheese.offsetLeft;
@@ -193,7 +193,7 @@ right.addEventListener("click", function (e) {
 		mazeArray[ratPos[0]][ratPos[1] + 1] = 2;
 	}
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr motii");
+		alert("Exercise kr mousei");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);
@@ -203,8 +203,8 @@ right.addEventListener("click", function (e) {
 });
 
 left.addEventListener("click", function (e) {
-	let rat = document.getElementById("moti");
-	let cheese = document.getElementById("momo");
+	let rat = document.getElementById("mouse");
+	let cheese = document.getElementById("cheese");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
 	let ratTop = rat.offsetTop; //gives the distance from the top of parent
 	let foodleft = cheese.offsetLeft;
@@ -219,7 +219,7 @@ left.addEventListener("click", function (e) {
 		mazeArray[ratPos[0]][ratPos[1] - 1] = 2;
 	}
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr motii");
+		alert("Exercise kr mousei");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);
@@ -229,8 +229,8 @@ left.addEventListener("click", function (e) {
 });
 
 up.addEventListener("click", function (e) {
-	let rat = document.getElementById("moti");
-	let cheese = document.getElementById("momo");
+	let rat = document.getElementById("mouse");
+	let cheese = document.getElementById("cheese");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
 	let ratTop = rat.offsetTop; //gives the distance from the top of parent
 	let foodleft = cheese.offsetLeft;
@@ -245,7 +245,7 @@ up.addEventListener("click", function (e) {
 		mazeArray[ratPos[0] - 1][ratPos[1]] = 2;
 	}
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr motii");
+		alert("Exercise kr mousei");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);
@@ -255,8 +255,8 @@ up.addEventListener("click", function (e) {
 });
 
 down.addEventListener("click", function (e) {
-	let rat = document.getElementById("moti");
-	let cheese = document.getElementById("momo");
+	let rat = document.getElementById("mouse");
+	let cheese = document.getElementById("cheese");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
 	let ratTop = rat.offsetTop; //gives the distance from the top of parent
 	let foodleft = cheese.offsetLeft;
@@ -275,7 +275,7 @@ down.addEventListener("click", function (e) {
 		console.log(mazeArray);
 	}
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr motii");
+		alert("Exercise kr mousei");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);
@@ -289,8 +289,8 @@ up.addEventListener("click", EventHandle);
 down.addEventListener("click", EventHandle);
 
 function EventHandle(e) {
-	let rat = document.getElementById("moti");
-	let cheese = document.getElementById("momo");
+	let rat = document.getElementById("mouse");
+	let cheese = document.getElementById("cheese");
 	let ratleft = rat.offsetLeft; //gives the distance from the left of parent
 	let ratTop = rat.offsetTop; //gives the distance from the top of parent
 	let foodleft = cheese.offsetLeft;
@@ -345,7 +345,7 @@ function EventHandle(e) {
 	}
 
 	if (ratleft == foodleft && ratTop == foodTop) {
-		alert("Exercise kr motii");
+		alert("Exercise kr mousei");
 		// mazeArray[3][3] = 1;
 		setRatPos(0, 0);
 		setCheesePos(0, 0);

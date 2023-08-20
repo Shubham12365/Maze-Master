@@ -43,13 +43,13 @@ h1 {
 .wall {
 	background-color: black;
 }
-#moti {
+#mouse {
 	z-index: 1;
 	position: absolute;
 	top: 0;
 	left: 0;
 }
-#momo {
+#cheese {
 	position: absolute;
 	bottom: 0;
 	right: 0;
